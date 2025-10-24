@@ -1,0 +1,94 @@
+def jogo_da_velha():
+    jogo = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+    ]
+
+    for i in jogo:
+        print(*i)
+
+    while True:
+        
+        while True:
+            try:
+                jogador_x = int(input('Digite um número disponível na matriz para marcar o "x": '))
+                marcador_x = False
+
+                for i in range(len(jogo)):
+                    for j in range(len(jogo[i])):
+                        if jogador_x == jogo[i][j]:
+                            jogo[i][j] = 'x'
+                            marcador_x = True
+
+                if marcador_x:
+                    for i in jogo:
+                        print(*i)
+                    break
+                else:
+                    print(f'{jogador_x} não é uma opção disponível, digite novamente.')
+            except ValueError:
+                print('Entrada inválida. Digite um número.')
+
+       
+        if (jogo[0][0] == 'x' and jogo[0][1] == 'x' and jogo[0][2] == 'x') or \
+           (jogo[1][0] == 'x' and jogo[1][1] == 'x' and jogo[1][2] == 'x') or \
+           (jogo[2][0] == 'x' and jogo[2][1] == 'x' and jogo[2][2] == 'x') or \
+           (jogo[0][0] == 'x' and jogo[1][0] == 'x' and jogo[2][0] == 'x') or \
+           (jogo[0][1] == 'x' and jogo[1][1] == 'x' and jogo[2][1] == 'x') or \
+           (jogo[0][2] == 'x' and jogo[1][2] == 'x' and jogo[2][2] == 'x') or \
+           (jogo[0][0] == 'x' and jogo[1][1] == 'x' and jogo[2][2] == 'x') or \
+           (jogo[0][2] == 'x' and jogo[1][1] == 'x' and jogo[2][0] == 'x'):
+            print('Jogador X venceu!')
+            for i in jogo:
+                print(*i)
+            break
+
+        elif all(isinstance(casa, str) for linha in jogo for casa in linha):
+            print('Deu velha!')
+            for i in jogo:
+                print(*i)
+            break
+
+
+        while True:
+            try:
+                jogador_o = int(input('Digite um número disponível na matriz para marcar o "o": '))
+                marcador_o = False
+
+                for i in range(len(jogo)):
+                    for j in range(len(jogo[i])):
+                        if jogador_o == jogo[i][j]:
+                            jogo[i][j] = 'o'
+                            marcador_o = True
+
+                if marcador_o:
+                    for i in jogo:
+                        print(*i)
+                    break
+                else:
+                    print(f'{jogador_o} não é uma opção disponível, digite novamente.')
+            except ValueError:
+                print('Entrada inválida. Digite um número.')
+
+
+        if (jogo[0][0] == 'o' and jogo[0][1] == 'o' and jogo[0][2] == 'o') or \
+           (jogo[1][0] == 'o' and jogo[1][1] == 'o' and jogo[1][2] == 'o') or \
+           (jogo[2][0] == 'o' and jogo[2][1] == 'o' and jogo[2][2] == 'o') or \
+           (jogo[0][0] == 'o' and jogo[1][0] == 'o' and jogo[2][0] == 'o') or \
+           (jogo[0][1] == 'o' and jogo[1][1] == 'o' and jogo[2][1] == 'o') or \
+           (jogo[0][2] == 'o' and jogo[1][2] == 'o' and jogo[2][2] == 'o') or \
+           (jogo[0][0] == 'o' and jogo[1][1] == 'o' and jogo[2][2] == 'o') or \
+           (jogo[0][2] == 'o' and jogo[1][1] == 'o' and jogo[2][0] == 'o'):
+            print('Jogador O venceu!')
+            for i in jogo:
+                print(*i)
+            break
+
+        elif all(isinstance(casa, str) for linha in jogo for casa in linha):
+            print('Deu velha!')
+            for i in jogo:
+                print(*i)
+            break
+
+jogo_da_velha()
